@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO -->
+    <meta name="description" content="PhD Student, Imperial College London">
+    <meta name="author" content="Michael Haigh">
+    <meta name="url" content="https://mhaigh.github.io/">
+    <meta name="robots" content="index,follow">
+
+
+    <title>Michael Haigh</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png"> -->
+
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="plugin.css">
+
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+	<script>
+
+
+	$(function() {
+
+	$.getJSON('decks_win_diff.json', function(data) {
+		var pos = 1;
+		$.each(data, function(data, entry) {
+		var tblRow = "<tr>" + "<td>" + pos + "</td>" + "<td>" + entry[0] + "</td>" +
+						"<td>" + entry[1] + "</td>" + "<td>" + entry[2] + "</td>" + "</tr>"
+		pos += 1;
+		$(tblRow).appendTo("#Table tbody");
+     });
+
+   });
+
+});
+	</script>
+
+
+</head>
+
+
+
+<body>
+
+<div align="center">
+<h3> Win difference </h3>
+</div> <br>
+
+<div class="container">
+<table id="Table" class="table table-striped" width="400">
+
+	<thead>
+		<th> </th>
+		<th>Deck</th>
+		<th>Wins</th>
+		<th>Losses</th>
+	</thead>
+
+	<tbody>
+	</tbody>
+
+</table>
+</div>
+
+
+</body>
