@@ -36,31 +36,14 @@
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
 
-	<script>
 
-
-	$(function() {
-
-	$.getJSON('decks_win_diff.json', function(data) {
-		var pos = 1;
-		$.each(data, function(data, entry) {
-		var tblRow = "<tr>" + "<td>" + pos + "</td>" + "<td>" + entry[0] + "</td>" +
-						"<td>" + entry[1] + "</td>" + "<td>" + entry[2] + "</td>" + "</tr>"
-		pos += 1;
-		$(tblRow).appendTo("#Table tbody");
-     });
-
-   });
-
-});
-	</script>
 
 
 </head>
 
 
 
-<body>
+<body onload=>
 
 <div align="center">
 <h3> Win difference </h3>
@@ -81,6 +64,25 @@
 
 </table>
 </div>
+
+<script>
+
+
+	//$(function() {
+
+	$.getJSON('decks_win_diff.json', function(data) {
+		var pos = 1;
+		$.each(data, function(data, entry) {
+		var tblRow = "<tr>" + "<td>" + pos + "</td>" + "<td>" + entry[0] + "</td>" +
+						"<td>" + entry[1] + "</td>" + "<td>" + entry[2] + "</td>" + "</tr>"
+		pos += 1;
+		$(tblRow).appendTo("#Table tbody");
+     });
+
+   });
+
+//});
+</script>
 
 
 </body>
