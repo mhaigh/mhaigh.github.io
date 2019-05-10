@@ -30,11 +30,12 @@
     <!-- Main CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="style.css">
 
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
 
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 
 
 
@@ -43,45 +44,91 @@
 
 
 
-<body onload=>
+<body onload="makeTable('winDiff')">
 
 <div align="center">
-<h3> Win difference </h3>
+<h3> Keyforge Tracker </h3>
 </div> <br>
 
+<div class="container" id="test">
+<select name="order" onchange="makeTable(this.value)">
+	<option value="winDiff" selected="selected">winDiff</option>
+	<option value="winPcnt">win %</option>
+</select>
+</div>
+
 <div class="container">
-<table id="Table" class="table table-striped" width="400">
+<table id="Table1" class="table table-striped" width="400">
 
 	<thead>
 		<th> </th>
-		<th>Deck</th>
-		<th>Wins</th>
-		<th>Losses</th>
+		<th title="Decks">Deck</th>
+		<th title="Wins">Wins</th>
+		<th title="Losses">Losses</th>
+		<th title="win difference">Win difference</th>
+		<th title="Win ratio">Win ratio</th>
+		<th title="Opponent average SAS">OASAS</th>
 	</thead>
 
-	<tbody>
+	<tbody id="tableBody">
 	</tbody>
 
 </table>
 </div>
 
+
+
+
+<script>
+$.ajaxSetup({beforeSend: function(xhr){
+  if (xhr.overrideMimeType)
+  {
+    xhr.overrideMimeType("application/json");
+  }
+}
+});
+</script>
+
+
+
 <script>
 
+//$.getJSON("data/order.json")
 
-	//$(function() {
+function makeTable(order){
 
-	$.getJSON('decks_win_diff.json', function(data) {
-		var pos = 1;
-		$.each(data, function(data, entry) {
-		var tblRow = "<tr>" + "<td>" + pos + "</td>" + "<td>" + entry[0] + "</td>" +
-						"<td>" + entry[1] + "</td>" + "<td>" + entry[2] + "</td>" + "</tr>"
+document.getElementById("tableBody").innerHTML = "";
+
+// Get file.
+if (order == "winDiff"){
+	var file = "data/decks_winDiff.json";
+}
+else{
+	var file = "data/decks_winPcnt.json";
+}
+
+$.getJSON( file, function( data ) {
+	var pos = 1;
+	$.each(data, function(data, val) {
+		var tblRow = "<tr>" + "<td>" + pos + "</td>" + "<td id=pos" + pos + ">" + "<a href="+val["url"]+" target='_blank'>" + val["longName"] + "</a>" + "</td>" +
+						"<td>" + val["wins"] + "</td>" + "<td>" + val["losses"] + "</td>" + "<td>" + String(Number(val["wins"]) - Number(val["losses"])) + "</td>" 
+						+ "<td>" + parseFloat(val["win%"]).toFixed(2) + "</td>" + "<td>" + val["OASAS"] + "</td>" + "</tr>"
+
 		pos += 1;
-		$(tblRow).appendTo("#Table tbody");
-     });
+		$(tblRow).appendTo("#Table1")
+	});
+});
+return true;
+}
 
-   });
+$.getJSON( "data/decks_winDiff.json", function( data ) {
+	var pos = 1;
+	$.each(data, function(val) {
 
-//});
+});
+});
+
+
 </script>
 
 
