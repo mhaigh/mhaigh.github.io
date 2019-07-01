@@ -64,6 +64,7 @@
 	<thead>
 		<th> </th>
 		<th title="Decks">Deck</th>
+		<th title="Played">Played</th>
 		<th title="Wins">Wins</th>
 		<th title="Losses">Losses</th>
 		<th title="win difference">Win diff.</th>
@@ -134,11 +135,13 @@ $.getJSON( file, function( data ) {
 			var tdid = "tableDeckOdd";
 		}
 		var tblRow = "<tr>" + "<td>" + pos + "</td>" + 
-			"<td id=" + tdid + "> <span align='left'> <a href="+val["url"]+" target='_blank'>" + val["longName"] + "</a>" + " (" +val["SAS"] + ") " + "</span>" 
+			"<td id=" + tdid + "> <span align='left'> <a href="+val["url"]+" target='_blank'>" + val["longName"] + "</a>" + " (" + val["owner"] + ", " + val["SAS"]  + ") " + "</span>" 
 			+ "<span align='right'> <img id='house' src='images/" + val["houses"][0] + ".png' alt='Brobnar' align='right'> </span>"
 			+ "<span align='right'> <img id='house' src='images/" + val["houses"][1] + ".png' alt='Brobnar' align='right'> </span>" 
 			+ "<span align='right'> <img id='house' src='images/" + val["houses"][2] + ".png' alt='Brobnar' align='right'> </span> </td>"
-			+ "<td>" + val["wins"] + "</td>" + "<td>" + val["losses"] + "</td>" + "<td>" + String(Number(val["wins"]) - Number(val["losses"])) + "</td>" 
+			+ "<td>" + String(Number(val["wins"]) + Number(val["losses"])) + "</td>"
+			+ "<td>" + val["wins"] + "</td>" + "<td>" + val["losses"] + "</td>" 
+			+ "<td>" + String(Number(val["wins"]) - Number(val["losses"])) + "</td>" 
 			+ "<td>" + parseFloat(val["win%"]).toFixed(2) + "</td>" + "<td>" + val["OASAS"] + "</td>" + "</tr>"
 
 		pos += 1;
