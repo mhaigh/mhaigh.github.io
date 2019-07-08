@@ -31,11 +31,11 @@
     <!-- All CSS Plugins -->
     <!--link rel="stylesheet" type="text/css" href="plugin.css"-->
 
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
 
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
 
@@ -78,9 +78,18 @@
 </table>
 </div>
 
+
+
 <div class="container">
 <h3>Fixtures</h3>
 </div> <br>
+
+
+<div class="container">
+<select name="filter" onchange="makeFixtures(this.value)" id="fixturesFilter">
+	<option value="All" selected="selected">All</option>
+</select>
+</div>
 
 <div class="container" >
 <table class="table table-striped" id="tableFixtures" width="400">
@@ -96,18 +105,29 @@
 </div>
 
 
+<br>
 
-<script>
-$.ajaxSetup({beforeSend: function(xhr){
-  if (xhr.overrideMimeType)
-  {
-    xhr.overrideMimeType("application/json");
-  }
-}
-});
-</script>
+<br>
 
+<br>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
 
 <script>
 
@@ -161,29 +181,80 @@ $.getJSON( "data/decks_winDiff.json", function( data ) {
 
 </script>
 
-<script>
-$.getJSON("data/matches.json", function(data){
-	var pos = 1;
-	$.each(data, function(data, val){
-		if (pos % 2 == 0){
-			var loser_id = "loserEven";
-			var winner_id = "winnerEven";
-			var middle_id = "middleEven";
-		}
-		else{
-			var loser_id = "loserOdd";
-			var winner_id = "winnerOdd";
-			var middle_id = "middleOdd";
-		}		
 
-		var tblRow = "<tr>" + "<td id=" + winner_id + ">" + "<a href='' target='_blank'>" + val[0] + "</a>" + "</td>"
-					 + "<td id=" + middle_id + "> v </td>"
-					 + "<td id=" + loser_id + ">" + "<a href='' target='_blank'>" + val[1] + "</a>" + "</td>" + "</tr>";
-		$(tblRow).appendTo("#fixtures");
-		pos += 1;
+<script>
+
+// Get file.
+var file = "data/decks_winDiff.json";
+
+$.getJSON( file, function( data ) {
+	$.each(data, function(data, val) {
+		var filterOption = '<option value="' + val["longName"] + '">' + val["longName"] + '</option>'
+		$(filterOption).appendTo("#fixturesFilter");
 	});
 });
 </script>
+
+
+<script>
+
+
+function makeFixtures(filter){
+
+document.getElementById("fixtures").innerHTML = "";
+
+
+$.getJSON("data/matches.json", function(data){
+
+	var pos = 1;
+
+	if (filter == "All"){
+		var all = true;
+	}
+	else{
+		var all = false;
+	}
+
+	$.each(data, function(data, val){
+
+		if (all || (val[0] === filter || val[1] === filter)){
+
+			if (pos % 2 == 0){
+				var loser_id = "loserEven";
+				var winner_id = "winnerEven";
+				var middle_id = "middleEven";
+			}
+			else{
+				var loser_id = "loserOdd";
+				var winner_id = "winnerOdd";
+				var middle_id = "middleOdd";
+			}		
+
+			var tblRow = "<tr>" + "<td id=" + winner_id + ">" + "<a href='' target='_blank'>" + val[0] + "</a>" + "</td>"
+						 + "<td id=" + middle_id + "> v </td>"
+						 + "<td id=" + loser_id + ">" + "<a href='' target='_blank'>" + val[1] + "</a>" + "</td>" + "</tr>";
+			$(tblRow).appendTo("#fixtures");
+			pos += 1;
+
+		}
+	});
+
+
+});
+
+
+return true;
+};
+
+
+</script>
+
+<script>
+makeFixtures("All")
+</script>
+
+
+
 
 
 
