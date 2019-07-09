@@ -1,0 +1,179 @@
+<style>
+
+/*
+
+    Template Name : WebRes - Personal Resume Template
+    Author : UiPasta Team
+    Website : http://www.uipasta.com/
+    Support : http://www.uipasta.com/support/
+
+
+*/
+
+
+/* Global Style */
+
+body {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 1px;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+	text-align: left;
+}
+
+
+
+#name {
+	background:#ffffcc;
+}
+
+#about {
+	background:#e6e6e6;
+}
+
+#publications {
+	background:#e6e6e6;
+}
+
+#research {
+	background: #f2f2f2;
+}
+
+#contact {
+	background: #f2f2f2;
+}
+
+ 
+/* Home Section and Navigation Menu */
+
+
+.table {
+	margin-bottom: 0px;
+}
+
+.tbody {
+	border: 3px solid #e4e4e4;
+}
+
+.table a {
+	color: #ffffff;
+}
+
+table > tbody > tr > td {
+	padding: 15px;
+
+}
+
+.table tr > td {
+	padding: 11px 13px;
+}
+
+tr:nth-child(1) > td {
+	border-top:0px;
+}
+
+#tableDeckOdd {
+	font-weight: 500;
+	color: #ffffff;
+	background: #3399ff;
+}
+
+#tableDeckEven {
+	font-weight: 500;
+	color: #ffffff;
+	background: #4da6ff;
+}
+
+#fixtures {
+	font-weight: 500;
+}
+
+#winner {
+	font-weight: 500;
+	text-align: right;
+}
+
+#loser {
+	font-weight: 500;
+	text-align: left;
+}
+
+#winnerEven {
+	font-weight: 500;
+	text-align: right;
+	background: #4da6ff;
+}
+
+#winnerOdd {
+	font-weight: 500;
+	text-align: right;
+	background: #3399ff;
+}
+
+#loserEven {
+	font-weight: 500;
+	text-align: left;
+	background: #4da6ff;
+}
+
+#loserOdd {
+	font-weight: 500;
+	text-align: left;
+	background: #3399ff;
+}
+
+#middleEven {
+	font-weight: 500;
+	text-align: center;
+	background: #4da6ff;
+}
+
+#middleOdd {
+	font-weight: 500;
+	text-align: center;
+	background: #3399ff;
+}
+
+
+#winnerHead {
+	text-align: right;
+}
+
+#loserHead {
+	text-align: left;
+}
+
+
+
+#house {
+	width: 30px;
+	height: 30px;
+}
+
+
+
+.img-circle {
+    border-radius: 15px;  /;
+}
+
+
+
+</style>
+
+
