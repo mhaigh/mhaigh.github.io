@@ -166,7 +166,7 @@ $.getJSON( file, function( data ) {
 			+ "<td>" + String(Number(val["wins"]) + Number(val["losses"])) + "</td>"
 			+ "<td>" + val["wins"] + "</td>" + "<td>" + val["losses"] + "</td>" 
 			+ "<td>" + String(Number(val["wins"]) - Number(val["losses"])) + "</td>" 
-			+ "<td>" + parseFloat(val["win%"]).toFixed(2) + "</td>" + "<td>" + val["OASAS"] + "</td>" + "</tr>"
+			+ "<td>" + parseFloat(val["win%"]).toFixed(2) + "</td>" + "<td>" + val["Elo"] + "</td>" + "</tr>"
 
 		pos += 1;
 		$(tblRow).appendTo("#Table1")
