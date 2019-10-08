@@ -55,6 +55,7 @@
 <select name="order" onchange="makeTable(this.value)">
 	<option value="winDiff" selected="selected">winDiff</option>
 	<option value="winPcnt">win %</option>
+	<option value="ELO">ELO</option>
 </select>
 </div>
 
@@ -69,7 +70,7 @@
 		<th title="Losses">Losses</th>
 		<th title="win difference">Win diff.</th>
 		<th title="Win ratio">Win ratio</th>
-		<th title="Opponent average SAS">OASAS</th>
+		<th title="ELO rating">ELO</th>
 	</thead>
 
 	<tbody id="tableBody">
@@ -141,10 +142,13 @@ document.getElementById("tableBody").innerHTML = "";
 if (order == "winDiff"){
 	var file = "data/decks_winDiff.json";
 }
-else{
+else if (order == "winPcnt"){
 	var file = "data/decks_winPcnt.json";
 }
-
+else {
+	var file = "data/decks_ELO.json";
+}
+	
 $.getJSON( file, function( data ) {
 	var pos = 1;
 	$.each(data, function(data, val) {
